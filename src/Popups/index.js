@@ -1,15 +1,38 @@
-import { getTargetUrl } from '../Helpers'
-
-const streetlightPopup = (feature, layer) => {
-  const varName = getTargetUrl()
-
-  const content = `<div class="item"><i class="tag fa fa-map-marker"></i><p class="title">Location </p><p class="info">${feature.properties.location_description}</p></div><hr/>
-  <div class="item"><i class="tag fa fa-tag"></i><p class="title">Number on street light </p><p class="info">${feature.properties.central_asset_id}</p></div>
-  <a class="button-primary" href="${varName}/street-lighting/report-an-issue/fault-type?assetId=${feature.properties.central_asset_id}&siteCode=${feature.properties.site_code}">Report this street light</a>`
-
+const greenbeltPopup = (feature, layer) => {
+  
+  const content = `<div class="item"><i class="fa fa-envira" aria-hidden="true"></i><p class="title">Green Belt</p>
+  
+  </div>`
+ 
   layer.bindPopup(content)
-}
+ }
+
+ const aqmaPopup = (feature, layer) => {
+  
+  const content = `<div class="item"><i class="fa fa-list" aria-hidden="true"></i><p class="title">Air Quality Management Area</p>
+  <p></p>
+  <p class="info">Notes: ${feature.properties.notes}</p>
+
+  </div>`
+ 
+  layer.bindPopup(content)
+ }
+
+ const smokecontrolareaPopup = (feature, layer) => {
+  
+  const content = `<div class="item"><i class="fa fa-tag" aria-hidden="true"></i><p class="title">Smoke Control Area</p>
+  <p></p>
+  <p class="info">Restrictions: ${feature.properties.restrictions}</p>
+  <p class="info">Source: ${feature.properties.source}</p>
+  <p class="info">Derived: ${feature.properties.derived}</p>
+
+  </div>`
+ 
+  layer.bindPopup(content)
+ }
 
 export {
-  streetlightPopup
+  greenbeltPopup,
+  aqmaPopup,
+  smokecontrolareaPopup
 }
