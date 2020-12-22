@@ -1,7 +1,7 @@
 const schoolsPopup = (feature, layer) => {
   
-  const content = `<div class="item"><i class="fa fa-envira" aria-hidden="true"></i><p class="title">Green Belt</p>
-  
+  const content = `<div class="item"><i class="fa fa-envira" aria-hidden="true"></i><p class="title">School</p>
+  <p class="info">${feature.properties.name}</p>
   </div>`
  
   layer.bindPopup(content)
@@ -9,9 +9,8 @@ const schoolsPopup = (feature, layer) => {
 
  const schoolcatchmentsPopup = (feature, layer) => {
   
-  const content = `<div class="item"><i class="fa fa-list" aria-hidden="true"></i><p class="title">Air Quality Management Area</p>
-  <p></p>
-  <p class="info">Notes: ${feature.properties.notes}</p>
+  const content = `<div class="item"><i class="fa fa-list" aria-hidden="true"></i><p class="title">School Catchments</p>
+  <p class="info">${feature.properties.school_name}</p>
 
   </div>`
  

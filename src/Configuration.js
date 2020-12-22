@@ -26,7 +26,7 @@ const Configuration = {
                 onEachFeature: schoolcatchmentsPopup
             },
             displayOverlay: true,
-            visibleByDefault: true
+            visibleByDefault: false
         },
 
         {
@@ -38,7 +38,7 @@ const Configuration = {
                 onEachFeature: schoolcatchmentsPopup
             },
             displayOverlay: true,
-            visibleByDefault: true
+            visibleByDefault: false
         },
 
         {
@@ -50,7 +50,7 @@ const Configuration = {
                 onEachFeature: schoolcatchmentsPopup
             },
             displayOverlay: true,
-            visibleByDefault: true
+            visibleByDefault: false
         },
 
         {
@@ -62,7 +62,7 @@ const Configuration = {
                 onEachFeature: schoolcatchmentsPopup
             },
             displayOverlay: true,
-            visibleByDefault: true
+            visibleByDefault: false
         },
         
         {
