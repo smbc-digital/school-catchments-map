@@ -1,6 +1,6 @@
 const schoolsPopup = (feature, layer) => {
   
-  const content = `<div class="item"><i class="fa fa-envira" aria-hidden="true"></i><p class="title">School</p>
+  const content = `<div class="item"><i class="fa fa-graduation-cap" aria-hidden="true"></i><p class="title">School</p>
   <p class="info">${feature.properties.name}</p>
   </div>`
  
