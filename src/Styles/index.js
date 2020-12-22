@@ -1,38 +1,48 @@
-const greenbeltStyle = {
-    color: '#b3de69',
-    weight: 2,
-    opacity: 0,
-    fillColor: '#b3de69',
-    fillOpacity: 0.25
-}
-
-const aqmaStyle = {
-    color: '#6a3d9a',
-    weight: 2,
-    opacity: 0.25,
-    fillColor: '#6a3d9a',
-    fillOpacity: 0.25
-}
-
-function getColor_smokecontrolarea(d) {
-    switch  (d) {   case 'Smoke free zone - restrictions on the burning of domestic solid fuel'    :
+function getColor_schoolcatchments(d) {
+    switch  (d) {   case 'Primary                                           '    :
+                        return '#1f78b4'    
+                    case 'Secondary                                         '    :
+                        return '#33a02c'    
+                    case 'Infant                                            '    :
                         return '#e31a1c'    
-                    case 'smoke permitted zone - no restrictions in relation to the burning of solid fuel within domestic premisses'    :
-                        return '#1f78b4' 
-                }
+                    case 'Junior                                            '    :
+                        return '#ff7f00'    
     }
-function smokecontrolareaStyle (feature) {
+}
+
+function schoolcatchmentsStyle (feature) {
     return {
-        color: getColor_smokecontrolarea (feature.properties.restrictions),
+        color: getColor_schoolcatchments (feature.properties.school_type),
+        weight: 1,
+        opacity: 1,
+        fillColor: getColor_schoolcatchments (feature.properties.school_type),
+        fillOpacity: 0
+    }
+}
+
+function getColor_schools(d) {
+    switch  (d) {   case 'Primary'    :
+                        return '#1f78b4'    
+                    case 'Secondary'    :
+                        return '#33a02c'    
+                    case 'Infant'    :
+                        return '#e31a1c'    
+                    case 'Junior'    :
+                        return '#ff7f00'    
+}
+    }
+        
+    function schoolsStyle (feature) {
+    return {
+        color: '#000',
         weight: 2,
         opacity: 1,
-        fillColor: getColor_smokecontrolarea (feature.properties.restrictions),
-        fillOpacity: 0.25
+        fillColor: getColor_schools (feature.properties.school_type),
+        fillOpacity: 0.5
+        }
     }
-}
     
 export {
-greenbeltStyle,
-aqmaStyle,
-smokecontrolareaStyle
+schoolcatchmentsStyle,
+schoolsStyle
 }   

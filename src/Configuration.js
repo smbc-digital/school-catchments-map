@@ -1,12 +1,12 @@
-//import Leaflet from 'leaflet'
-import { greenbeltStyle, aqmaStyle, smokecontrolareaStyle } from './Styles'
-import { greenbeltPopup, aqmaPopup, smokecontrolareaPopup} from './Popups' 
+import Leaflet from 'leaflet'
+import { schoolcatchmentsStyle, schoolsStyle } from './Styles'
+import { schoolcatchmentsPopup, schoolsPopup } from './Popups' 
 
 
 const Configuration = {
     Map: {
         StartingLatLng: [53.391067,-2.1197936],
-        StartingZoom: 2,
+        StartingZoom: 14,
         FullscreenControl: true,
         DisplayLayerControls: true,
         DisplayGrayScale: true,
@@ -18,39 +18,65 @@ const Configuration = {
     [
         
         {
-            key: 'Smoke Control Areas',
-            url: 'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=climatology:smoke_control_area&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
+            key: 'Primary Catchments',
+            url: 'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=education:vw_primary_catchments&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
             layerOptions: {
                 maxZoom: 2,
-                style: smokecontrolareaStyle,
-                onEachFeature: smokecontrolareaPopup
+                style: schoolcatchmentsStyle,
+                onEachFeature: schoolcatchmentsPopup
             },
             displayOverlay: true,
-            visibleByDefault: false
-        },
-        
-        {
-            key: 'Green Belt',
-            url: 'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=planning:green_belt_os&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
-            layerOptions: {
-                maxZoom: 2,
-                style: greenbeltStyle,
-                onEachFeature: greenbeltPopup
-            },
-            displayOverlay: true,
-            visibleByDefault: false
+            visibleByDefault: true
         },
 
         {
-            key: 'Air Quality Management Areas',
-            url: 'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=climatology:air_quality_management_areas&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
+            key: 'Infant Catchments',
+            url: 'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=education:vw_infant_catchments&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
             layerOptions: {
                 maxZoom: 2,
-                style: aqmaStyle,
-                onEachFeature: aqmaPopup
+                style: schoolcatchmentsStyle,
+                onEachFeature: schoolcatchmentsPopup
             },
             displayOverlay: true,
-            visibleByDefault: false
+            visibleByDefault: true
+        },
+
+        {
+            key: 'Junior Catchments',
+            url: 'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=education:vw_junior_catchments&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
+            layerOptions: {
+                maxZoom: 2,
+                style: schoolcatchmentsStyle,
+                onEachFeature: schoolcatchmentsPopup
+            },
+            displayOverlay: true,
+            visibleByDefault: true
+        },
+
+        {
+            key: 'Secondary Catchments',
+            url: 'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=education:vw_secondary_catchments&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
+            layerOptions: {
+                maxZoom: 2,
+                style: schoolcatchmentsStyle,
+                onEachFeature: schoolcatchmentsPopup
+            },
+            displayOverlay: true,
+            visibleByDefault: true
+        },
+        
+        {
+            key: 'School',
+            url: 'https://spatial.stockport.gov.uk/geoserver/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=education:all_schools&outputFormat=application/json&bbox={0},EPSG:4326&srsName=EPSG:4326',
+            layerOptions: {
+                maxZoom: 2,
+                onEachFeature: schoolsPopup,
+                pointToLayer: (feature, latlng) => {
+                    return Leaflet.circleMarker (latlng, schoolsStyle (feature))
+                }
+            },
+            displayOverlay: true,
+            visibleByDefault: true
         },
 
         {
